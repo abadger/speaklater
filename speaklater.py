@@ -13,23 +13,23 @@ r"""
     Example:
 
     >>> from speaklater import make_lazy_string
-    >>> sval = u'Hello World'
+    >>> sval = 'Hello World'
     >>> string = make_lazy_string(lambda: sval)
 
     This lazy string will evaluate to the value of the `sval` variable.
 
     >>> string
-    lu'Hello World'
-    >>> unicode(string)
-    u'Hello World'
+    l'Hello World'
+    >>> str(string)
+    'Hello World'
     >>> string.upper()
-    u'HELLO WORLD'
+    'HELLO WORLD'
 
     If you change the value, the lazy string will change as well:
 
-    >>> sval = u'Hallo Welt'
+    >>> sval = 'Hallo Welt'
     >>> string.upper()
-    u'HALLO WELT'
+    'HALLO WELT'
 
     This is especially handy when combined with a thread local and gettext
     translations or dicts of translatable strings:
@@ -42,7 +42,7 @@ r"""
     >>> yes = lazy_gettext(u'Yes')
     >>> print yes
     Ja
-    >>> l.translations[u'Yes'] = u'Si'
+    >>> l.translations[u'Yes'] = 'Si'
     >>> print yes
     Si
 
@@ -83,14 +83,14 @@ def make_lazy_gettext(lookup_func):
 
     Example:
 
-    >>> translations = {u'Yes': u'Ja'}
+    >>> translations = {'Yes': 'Ja'}
     >>> lazy_gettext = make_lazy_gettext(lambda: translations.get)
-    >>> x = lazy_gettext(u'Yes')
+    >>> x = lazy_gettext('Yes')
     >>> x
-    lu'Ja'
-    >>> translations[u'Yes'] = u'Si'
+    l'Ja'
+    >>> translations['Yes'] = 'Si'
     >>> x
-    lu'Si'
+    l'Si'
     """
     def lazy_gettext(string):
         if is_lazy_string(string):

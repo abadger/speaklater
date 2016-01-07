@@ -26,6 +26,7 @@ setup(
     author_email='armin.ronacher@active-4.com',
     version='1.3',
     url='http://github.com/mitsuhiko/speaklater',
+    use_2to3=True,
     py_modules=['speaklater'],
     description='implements a lazy string for python useful for use with gettext',
     long_description=get_docs(),
